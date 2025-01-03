@@ -1,0 +1,17 @@
+{
+    "name": "karunakar/lead-management",
+    "description": "Lead Management System for a small company.",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.7",
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "karunakar",
+            "email": "karunakar9010672860@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
