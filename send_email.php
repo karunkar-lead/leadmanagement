@@ -15,12 +15,12 @@ function sendEmail($recipient, $subject, $body) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'bunny.single@gmail.com';
-        $mail->Password = 'bunny@single@';
+        $mail->Username = 'your-mail@gmail.com';
+        $mail->Password = 'your-password';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('bunny.single@gmail.com', 'Bunny');
+        $mail->setFrom('your-mail@gmail.com', 'username');
         $mail->addAddress($recipient);
 
         $mail->isHTML(true);
@@ -34,7 +34,7 @@ function sendEmail($recipient, $subject, $body) {
     }
 }
 
-$recipient = 'karunakar9010672860@gmail.com';
+$recipient = 'recipient@gmail.com';
 $subject = 'Lead updated notification sending!';
 $body = '<h1>Hello!</h1><p>The lead is updated please go through it.</p>';
 
