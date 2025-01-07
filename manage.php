@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Check if the user has permission to edit
 if (!hasPermission($pdo, $_SESSION['role_id'], 'edit')) {
 
     die("You do not have permission to perform this action.");
@@ -145,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     <div class="container">
         <h1>Manage Leads</h1>
         <div class="d-flex">
-            <!-- Search & Filter Form -->
             <form method="get" class="form-inline mb-3">
                 <input type="text" name="search" placeholder="Search by name or email" class="form-control mr-2" value="<?= htmlspecialchars($search); ?>">
                 <select name="status" class="form-control mr-2">
@@ -157,8 +155,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                 <button type="submit" class="btn btn-primary">Search</button>
                 <a href="manage.php" class="btn btn-secondary ml-2">Reset</a>
             </form>
-            <!-- <div class="float-end"> -->
-                <!-- Export Form -->
                 <form method="get" action="export.php" class="mb-3 ml-5">
                     <input type="hidden" name="search" value="<?= htmlspecialchars($search); ?>">
                     <input type="hidden" name="status" value="<?= htmlspecialchars($filter_status); ?>">
@@ -167,10 +163,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
 
                 <a href="create.php" class="btn btn-info mb-3">Add Lead</a>
                 <a href="logout.php" class="btn btn-danger mb-3">Logout</a>
-            <!-- </div> -->
         </div>
 
-        <!-- Leads Table -->
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -215,7 +209,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
             </tbody>
         </table>
 
-        <!-- Pagination -->
         <?php if ($total_pages > 1): ?>
             <div class="pagination">
                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
@@ -227,7 +220,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
         <?php endif; ?>
     </div>
 
-    <!-- Optional: Add Bootstrap JS (Optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

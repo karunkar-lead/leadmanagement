@@ -8,10 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Check if the user has permission to edit
-// if (!hasPermission($pdo, $_SESSION['role_id'], 'edit')) {
-//     die("You do not have permission to perform this action.");
-// }
 
 $search = $_GET['search'] ?? '';
 $filter_status = $_GET['status'] ?? '';
@@ -141,7 +137,6 @@ $leads = $stmt->fetchAll();
         </div>
     </div>
 
-    <!-- Optional: Add Bootstrap JS (Optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

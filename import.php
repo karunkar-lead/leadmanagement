@@ -4,7 +4,17 @@ require 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
-// Process the uploaded file
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+if (!hasPermission($pdo, $_SESSION['role_id'], 'edit')) {
+
+    die("You do not have permission to perform this action.");
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $file = $_FILES['file'];
 
@@ -49,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
             if ($failed > 0) {
                     $message = "Already existing the mentioned mails in the lead, email: " . implode(', ', $skippedEmails);
                     $alertClass = "alert-danger";
-                
-                // $message = "Error processing file: " . $e->getMessage();
-                // $alertClass = "alert-danger";
-                // echo "Already existing this lead with this email: " . implode(', ', $skippedEmails);
             }else{
 
                 $message = "Leads are imported successfully.";

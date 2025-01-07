@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Lead</title>
-    <!-- Bootstrap CSS -->
+    <title>Register</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -69,7 +69,6 @@
         </form>
     </div>
 
-    <!-- Optional: Add Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
@@ -85,17 +84,15 @@ require 'vendor/autoload.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Encrypt password
-    $role_id = $_POST['role']; // Role assigned from the form
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $role_id = $_POST['role'];
 
-    // Check if the email already exists
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$email]);
     if ($stmt->rowCount() > 0) {
         die("Email already exists!");
     }
 
-    // Insert user into the users table
     $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)");
     $stmt->execute([$username, $email, $password, $role_id]);
 
@@ -103,6 +100,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $alertClass = "alert-success";
 
     header("Location: dashboard.php");
-
-    // echo "User registered successfully!";
 }
