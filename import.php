@@ -1,6 +1,7 @@
 <?php
 require 'config/database.php';
 require 'vendor/autoload.php';
+require 'functions.php';
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
