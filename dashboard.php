@@ -131,7 +131,12 @@ $leads = $stmt->fetchAll();
             <?= $_SESSION['role_id'] == 1 ? 'Admin' : ($_SESSION['role_id'] == 2 ? 'Manager' : 'User'); ?> Dashboard
         </h1>
         
+        <div class="d-flex text-end float-end">
+            <a href="import.php" class="btn btn-info mb-3 mr-2">Import Leads</a>
+            <a href="logout.php" class="btn btn-danger mb-3">Logout</a>
+        </div>
         <div class="d-flex">
+            
             <h4>Total Leads : <?= count($leads); ?></h4> 
             <a href="manage.php" class="btn btn-success ml-5">Manage Leads</a>
         </div>

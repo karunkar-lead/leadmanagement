@@ -161,7 +161,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                     <button type="submit" class="btn btn-success">Export to Excel</button>
                 </form>
 
-                <a href="create.php" class="btn btn-info mb-3">Add Lead</a>
+                <a href="create.php" class="btn btn-info mb-3 mr-2">Add Lead</a>
+                <a href="import.php" class="btn btn-info mb-3 mr-2">Import Leads</a>
                 <a href="logout.php" class="btn btn-danger mb-3">Logout</a>
         </div>
 
